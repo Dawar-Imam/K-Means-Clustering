@@ -7,7 +7,7 @@ import os
 if not os.path.exists("Graphs"):
     os.makedirs("Graphs")
 
-################################################################# Data Import and Preprocessing
+################################################################# 1) Data Import and Preprocessing
 data = pd.read_csv("userbehaviour.csv")
 null_values = data.isnull().sum()
 print("Null values in the dataset:\n", null_values)
@@ -16,7 +16,7 @@ print("\nColumn information:\n", column_info)
 descriptive_stats = data.describe()
 print("\nDescriptive statistics:\n", descriptive_stats)
 
-################################################################# Analysis of Screen Time and Spending Capacity
+################################################################# 2) Analysis of Screen Time and Spending Capacity
 highest_screen_time = data['Average Screen Time'].max()
 print("Highest screen time:", highest_screen_time)
 lowest_screen_time = data['Average Screen Time'].min()
@@ -30,7 +30,7 @@ print("Lowest amount spent:", lowest_amount_spent)
 average_amount_spent = data['Average Spent on App (INR)'].mean()
 print("Average amount spent:", average_amount_spent)
 
-################################################################# Relationship Analysis - Active Users vs. Uninstalled Users
+################################################################# 3) Relationship Analysis - Active Users vs. Uninstalled Users
 installed_users = data[data['Status'] == 'Installed']
 uninstalled_users = data[data['Status'] == 'Uninstalled']
 
@@ -48,7 +48,7 @@ plt.grid(True)
 plt.savefig('Graphs/Spending Capacity vs Screen Time.png')
 plt.show()
 
-################################################################# Relationship Analysis - Ratings vs. Screen Time
+################################################################# 4) Relationship Analysis - Ratings vs. Screen Time
 installed_apps = data[data['Status'] == 'Installed']
 uninstalled_apps = data[data['Status'] == 'Uninstalled']
 
@@ -66,7 +66,7 @@ plt.grid(True)
 plt.savefig('Graphs/Ratings vs Screen Time.png')
 plt.show()
 
-################################################################# User Segmentation with K-means Clustering
+################################################################# 5) User Segmentation with K-means Clustering
 label_encoder = LabelEncoder()
 data['Status'] = label_encoder.fit_transform(data['Status'])
 kmeans = KMeans(n_clusters=3, random_state=0).fit(data.drop(['userid'], axis=1))
