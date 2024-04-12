@@ -57,7 +57,8 @@ Dataset information composing of null value counts, feature descriptions, and st
 highlighted and segmented  using K-Means approach.
 
 ```bash
-Other Key Highlights:
+Other Key Highlights
+
 Highest screen time:    50.0
 Lowest screen time:     0.0
 Average screen time:    24.39039039039039
